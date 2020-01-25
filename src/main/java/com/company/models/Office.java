@@ -7,21 +7,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-@Table(name = "DEPARTMENTS")
-public class Department implements Serializable {
+public class Office implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	@Column(name = "DepartmentId")
+	@Column(name = "OfficeId")
 	private long id;
-
+	
 	@Column(name = "Name", nullable = false, length = 60)
 	private String name;
+	
+	@ManyToOne
+	@JoinColumn(name = "OfficeId_Department_fk")
+	private Department department;
 
 	public long getId() {
 		return id;
@@ -37,5 +41,13 @@ public class Department implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 }
