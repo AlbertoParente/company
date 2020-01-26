@@ -1,4 +1,4 @@
-package com.company.controller;
+package com.company.models;
 
 import java.io.Serializable;
 
@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.company.models.Uf;
 
 @Entity
 @Table(name= "ADDRESS")

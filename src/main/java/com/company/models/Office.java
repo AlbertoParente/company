@@ -1,6 +1,7 @@
 package com.company.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,8 +28,11 @@ public class Office implements Serializable {
 	private String name;
 	
 	@ManyToOne
-	@JoinColumn(name = "OfficeId_Department_fk")
+	@JoinColumn(name = "Department_Id_fk")
 	private Department department;
+	
+	@OneToMany(mappedBy = "office")
+	private List<Employee> employee;
 
 	public long getId() {
 		return id;
@@ -51,5 +56,13 @@ public class Office implements Serializable {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
 	}
 }
