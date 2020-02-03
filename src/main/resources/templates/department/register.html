@@ -24,15 +24,15 @@
 		</nav>
 
 		<div class="container" id="cadastro">
-			<form action="/department/salvar" method="POST">
+			<form th:action="@{/department/save}" th:object="${department}" method="POST">
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="nome">Departamento</label>
 						<input type="text" class="form-control" id="nome" placeholder="Nome Departamento"
-							autofocus="autofocus" name="nome" value="" />
+							autofocus="autofocus" th:field="*{name}"/>
 					</div>
 				</div>
-				<input type="hidden" id="id" name="id" value="" />
+				<input type="hidden" id="DepartmentId" name="DepartmentId" value="" />
 				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 			</form>
 		</div>
