@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DepartmentController {
 	
 	@GetMapping("/register")
-	public String register() {
+	public String departmentRegister() {
 		return "/department/register";
 	}
 	
-	@GetMapping("/departmentlist")
-	public String departmentlist() {
+	@GetMapping("/list")
+	public String departmentList() {
 		return "/department/list";
 	}
 }

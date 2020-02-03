@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EmployeeController {
 
 	@GetMapping("/register")
-	public String register() {
+	public String employeeRegister() {
 		return "/employee/register";
 	}
 	
-	@GetMapping("/employeelist")
-	public String departmentlist() {
+	@GetMapping("/list")
+	public String employeeList() {
 		return "/employee/list";
 	}
 }
