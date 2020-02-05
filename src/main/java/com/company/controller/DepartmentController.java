@@ -47,9 +47,10 @@ public class DepartmentController {
 		return "/department/register";
 	}
 	
+	@PostMapping("/edit")
 	public String departmentEdit(Department department) {
 		departmentRepository.save(department);
-		return "redirect:/department/register";
+		return "redirect:/department/signingup";
 	}
 	
 }
