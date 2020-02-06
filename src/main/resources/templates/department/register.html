@@ -24,7 +24,7 @@
 		</nav>
 
 		<div class="container" id="cadastro">
-			<form th:action="${department.id == null} ? @{/department/save} : @{/department/save}" th:object="${department/edit}" method="POST">
+			<form th:action="${department.id == null} ? @{/department/save} : @{/department/save}" th:object="${/department/edit}" method="POST">
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="nome">Departamento</label>
