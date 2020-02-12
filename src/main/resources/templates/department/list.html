@@ -39,7 +39,7 @@
 							<td th:text="${list.id}">3</td>
 							<td th:text="${list.name}">Administração</td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" th:href="/department/edit/{id} (id=${list.id})" role="button">
+								<a class="btn btn-info btn-sm" th:href="@{/department/edit/{id} (id=${list.id})}" role="button">
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 								</a>
 								<button id="btn_departamentos/excluir/3" type="button" class="btn btn-danger btn-sm">
