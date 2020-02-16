@@ -38,7 +38,7 @@ public class DepartmentController {
 	@PostMapping("/save")
 	public String save(Department department) {
 		departmentRepository.save(department);
-		return "redirect:/department/register";
+		return "redirect:/departments/register";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -50,7 +50,7 @@ public class DepartmentController {
 	@PostMapping("/edit")
 	public String departmentEdit(Department department) {
 		departmentRepository.save(department);
-		return "redirect:/department/register";
+		return "redirect:/departments/register";
 	}
 	
 }
