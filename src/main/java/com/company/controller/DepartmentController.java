@@ -38,19 +38,20 @@ public class DepartmentController {
 	@PostMapping("/save")
 	public String save(Department department) {
 		departmentRepository.save(department);
-		return "redirect:/departments/register";
+		return "redirect:/department/register";
 	}
 	
 	@GetMapping("/edit/{id}")
 	public String departmentPreEdit(@PathVariable("id") Long id , ModelMap model) {
-		model.addAttribute("department", departmentRepository.findById(id));
+		departmentRepository.findById(id).ifPresent(o -> model.addAttribute("department", o));
+		//model.addAttribute("department", departmentRepository.findById(id));
 		return "/department/register";
 	}
 	
 	@PostMapping("/edit")
 	public String departmentEdit(Department department) {
 		departmentRepository.save(department);
-		return "redirect:/departments/register";
+		return "redirect:/department/register";
 	}
 	
 }
