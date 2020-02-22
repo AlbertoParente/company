@@ -7,5 +7,7 @@ import com.company.models.Department;
 public interface DepartmentRepository extends JpaRepository<Department, Long>{
 
 	Department findById(long id);
+	
+	Department departmentContainsOffice(Long id);
 }
 
