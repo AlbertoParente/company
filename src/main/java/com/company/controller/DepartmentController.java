@@ -62,4 +62,10 @@ public class DepartmentController {
 		return "redirect:/department/list";
 	}
 	
+	public boolean departmentContainsOffice(Long id) {
+		if(departmentRepository.findById(id) != null) {
+			return false;
+		}
+		return true;
+	}
 }
