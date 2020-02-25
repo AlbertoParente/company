@@ -54,9 +54,13 @@ public class DepartmentController {
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Long id, ModelMap model) {
-		if(!DepartmentRepository.departmentContainsOffice(id)) {
-			departmentRepository.deleteById(id);
-		}
+		/*
+		 * if(!DepartmentRepository.departmentContainsOffice(id)) {
+		 * departmentRepository.deleteById(id); }
+		 */
+		departmentRepository.deleteById(id);
 		return "redirect:/department/list";
 	}
+	
+
 }
