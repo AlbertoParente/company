@@ -52,15 +52,18 @@ public class DepartmentController {
 		return "redirect:/department/register";
 	}
 	
-	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable("id") Long id, ModelMap model) {
-		/*
-		 * if(!DepartmentRepository.departmentContainsOffice(id)) {
-		 * departmentRepository.deleteById(id); }
-		 */
-		departmentRepository.deleteById(id);
-		return "redirect:/department/list";
+	@GetMapping("/delete/{id}") 
+	public String delete(@PathVariable("id") Long id, ModelMap model) { 
+		if(!departmentContainsOffice(id)) {
+			departmentRepository.deleteById(id); 
+		}
+		return "redirect:/department/list"; 
 	}
 	
-
+	public boolean departmentContainsOffice(Long id) {
+		if(departmentRepository.findById(id).get().getOffices().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
 }
