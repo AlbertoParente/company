@@ -1,7 +1,5 @@
 package com.company.controller;
 
-import java.lang.ProcessBuilder.Redirect;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -56,16 +54,9 @@ public class DepartmentController {
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Long id, ModelMap model) {
-		if(!departmentRepository.departmentContainsOffice(id)) {
+		if(!DepartmentRepository.departmentContainsOffice(id)) {
 			departmentRepository.deleteById(id);
 		}
 		return "redirect:/department/list";
-	}
-	
-	public boolean departmentContainsOffice(Long id) {
-		if(departmentRepository.findById(id) != null) {
-			return false;
-		}
-		return true;
 	}
 }

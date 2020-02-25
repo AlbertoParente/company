@@ -6,8 +6,13 @@ import com.company.models.Department;
 
 public interface DepartmentRepository extends JpaRepository<Department, Long>{
 
-	Department findById(long id);
+	public Department findById(long id);
 	
-	public boolean departmentContainsOffice(Long id);
+	public static boolean departmentContainsOffice(Long id) {
+		Department department = new Department();
+		if(department.getOffices().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
 }
-
