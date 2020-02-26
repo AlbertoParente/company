@@ -1,5 +1,7 @@
 package com.company.controller;
 
+import java.lang.ProcessBuilder.Redirect;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.models.Department;
 import com.company.repository.DepartmentRepository;
@@ -34,8 +37,9 @@ public class DepartmentController {
 	}
 	
 	@PostMapping("/save")
-	public String save(Department department) {
+	public String save(Department department, RedirectAttributes attr) {
 		departmentRepository.save(department);
+		attr.addFlashAttribute("success", "Departamento inserido com sucesso.");
 		return "redirect:/department/register";
 	}
 	
@@ -47,15 +51,20 @@ public class DepartmentController {
 	}
 	
 	@PostMapping("/edit")
-	public String departmentEdit(Department department) {
+	public String departmentEdit(Department department, RedirectAttributes attr) {
 		departmentRepository.save(department);
+		attr.addFlashAttribute("success", "Departamento editado com sucesso.");
 		return "redirect:/department/register";
 	}
 	
 	@GetMapping("/delete/{id}") 
-	public String delete(@PathVariable("id") Long id, ModelMap model) { 
-		if(!departmentContainsOffice(id)) {
-			departmentRepository.deleteById(id); 
+	public String delete(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) { 
+		if(departmentContainsOffice(id)) {
+			model.addAttribute("fail","Falha ao remover. Departamento possui cargo(s) vinculado(s).");			 
+		}
+		else {
+			departmentRepository.deleteById(id);
+			attr.addFlashAttribute("success","Departamento excluído com sucesso.");	
 		}
 		return "redirect:/department/list"; 
 	}
