@@ -47,14 +47,14 @@ public class DepartmentController {
 	public String departmentPreEdit(@PathVariable("id") Long id , ModelMap model) {
 		departmentRepository.findById(id).ifPresent(o -> model.addAttribute("department", o));
 		//model.addAttribute("department", departmentRepository.findById(id));
-		return "/department/register";
+		return "/department/edit";
 	}
 	
 	@PostMapping("/edit")
 	public String departmentEdit(Department department, RedirectAttributes attr) {
 		departmentRepository.save(department);
 		attr.addFlashAttribute("success", "Departamento editado com sucesso.");
-		return "redirect:/department/register";
+		return "redirect:/department/list";
 	}
 	
 	@GetMapping("/delete/{id}") 
