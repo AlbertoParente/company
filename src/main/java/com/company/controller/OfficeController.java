@@ -1,5 +1,7 @@
 package com.company.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,5 +43,10 @@ public class OfficeController {
 		officeRepository.save(office);
 		attr.addFlashAttribute("success", "Cargo inserido com sucesso.");
 		return "redirect:/office/register";
+	}
+	
+	@GetMapping("/departments")
+	public List<Department> departmentList() {
+		return departmentRepository.findAll();
 	}
 }
