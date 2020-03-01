@@ -3,9 +3,11 @@ package com.company.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import com.company.models.Department;
 
+@Component
 public class StringToDepartmentConverter implements Converter<String, Department> {
 
 	@Autowired
