@@ -1,17 +1,20 @@
-package com.company.repository;
+package com.company.controller;
 
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import com.company.models.Department;
+import com.company.repository.DepartmentRepository;
 
 @Component
-public class StringToDepartmentConverter implements Converter<String, Department> {
+public abstract class StringToDepartmentConverter implements Converter<String, Department> {
 
 	@Autowired
-	private DepartmentRepository departmentRepository;
+	DepartmentRepository departmentRepository;
 	
 	@Override
 	public Department convert(String text) {
