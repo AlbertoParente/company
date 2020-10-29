@@ -5,6 +5,7 @@ import com.company.models.Department;
 
 public interface DepartmentRepository extends JpaRepository<Department, Long>{
 	
-	public Department findById(long id);
-	
+	//public Department findById(long id);
+
+	public Department findAllById(Long id);
 }

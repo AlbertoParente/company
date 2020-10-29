@@ -20,7 +20,7 @@ public class Department implements Serializable {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	@Column(name = "DepartmentId")
-	private long id;
+	private Long id;
 
 	@Column(name = "Name", nullable = false, length = 60)
 	private String name;
@@ -28,11 +28,11 @@ public class Department implements Serializable {
 	@OneToMany(mappedBy = "department")
 	private List<Office> Offices;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
