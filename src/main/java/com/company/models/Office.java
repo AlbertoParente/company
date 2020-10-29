@@ -22,7 +22,7 @@ public class Office implements Serializable {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	@Column(name = "OfficeId")
-	private Long id;
+	private long id;
 	
 	@Column(name = "Name", nullable = false, length = 60)
 	private String name;
