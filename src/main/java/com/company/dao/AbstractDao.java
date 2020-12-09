@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 
-
 public abstract class AbstractDao<T, PK extends Serializable> {
 	
 	@SuppressWarnings("unchecked")
@@ -36,7 +35,7 @@ public abstract class AbstractDao<T, PK extends Serializable> {
 	}
 	
 	public T findById(PK id) {
-		entityManager.find(entityClass, id);
+		return entityManager.find(entityClass, id);
 	}
 	
 	public List<T> findAll() {
@@ -50,5 +49,6 @@ public abstract class AbstractDao<T, PK extends Serializable> {
 		for(int i = 0; i < params.length; i++) {
 			query.setParameter(i+1, params[i]);
 		}
+		return query.getResultList();
 	}
 }
