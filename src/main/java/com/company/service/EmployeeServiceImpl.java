@@ -10,38 +10,37 @@ import com.company.dao.EmployeeDao;
 import com.company.domain.Employee;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeDao employeeDao;
 	
 	@Override
-	@Transactional(readOnly = false)
 	public void save(Employee employee) {
 		employeeDao.save(employee);		
 	}
 
 	@Override
-	@Transactional(readOnly = false)
 	public void update(Employee employee) {
 		employeeDao.update(employee);
 		
 	}
 
 	@Override
-	@Transactional(readOnly = false)
 	public void delete(Long id) {
 		employeeDao.delete(id);
 		
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Employee findById(Long id) {
 		return employeeDao.findById(id);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Employee> findAll() {
 		return employeeDao.findAll();
 	}	

@@ -10,26 +10,24 @@ import com.company.dao.DepartmentDao;
 import com.company.domain.Department;
 
 @Service
+@Transactional(readOnly = false)
 public class DepartmentServiceImpl implements DepartmentService {
 	
 	@Autowired
 	private DepartmentDao departmentDao;
 	
 	@Override
-	@Transactional(readOnly = false)
 	public void save(Department department) {
 		departmentDao.save(department);
 	}
 
 	@Override
-	@Transactional(readOnly = false)
 	public void update(Department department) {
 		departmentDao.update(department);
 		
 	}
 
 	@Override
-	@Transactional(readOnly = false)
 	public void delete(Long id) {
 		departmentDao.delete(id);
 	}
