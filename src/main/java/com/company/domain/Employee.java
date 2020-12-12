@@ -11,9 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.company.models.Address;
-import com.company.models.Office;
-
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "EMPLOYEE")
