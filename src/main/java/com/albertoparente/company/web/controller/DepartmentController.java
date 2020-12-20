@@ -32,7 +32,7 @@ public class DepartmentController {
 	@PostMapping("/save")
 	public String salve(Department department) {
 		departmentService.save(department);
-		return "redirect:/departments/register";
+		return "redirect:/department/register";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -42,8 +42,16 @@ public class DepartmentController {
 	}
 	
 	@PostMapping("/edit")
-	public String edit(Department department) {
+	public String departmentEdit(Department department) {
 		departmentService.update(department);
 		return "redirect:/department/register";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String departmentDelete(@PathVariable("id") Long id, ModelMap model) {
+		if(!departmentService.departmentContainsOffice(id)) {
+			departmentService.delete(id);
+		}
+		return departmentList(model);
 	}
 }

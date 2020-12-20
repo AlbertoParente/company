@@ -16,7 +16,7 @@
 						<span>Cadastrar Departamentos</span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" href="/departments/list" role="button">
+				<a class="btn btn-primary btn-md" href="/department/list" role="button">
 					<span class="oi oi-spreadsheet" title="Listar" aria-hidden="true"></span>
 					<span>Listar Departamentos</span>
 				</a>
@@ -25,7 +25,7 @@
 
 		<div class="container" id="cadastro">
 			<div th:replace="fragments/alert"></div>
-			<form th:action="${department.id == null} ? @{/departments/save} : @{/departments/edit} : " 
+			<form th:action="${department.id == null} ? @{/department/save} : @{/departments/edit}" 
 				  th:object="${department}" method="POST">
 				<div class="form-row">
 					<div class="form-group col-md-6">
