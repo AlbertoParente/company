@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "ADDRESSES")
-public abstract class Address extends AbstractEntity<Long> {
+public class Address extends AbstractEntity<Long> {
 	
 	@Column(name= "address", nullable = false)
 	private String address;

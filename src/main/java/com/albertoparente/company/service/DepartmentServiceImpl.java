@@ -44,7 +44,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public boolean departmentContainsOffice(Long id) {
-		if(findById(id).getOffice().isEmpty()) {
+		if(findById(id).getOffices().isEmpty()) {
 			return false;
 		}
 		return true;

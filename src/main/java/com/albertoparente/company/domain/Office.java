@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "OFFICES")
-public abstract class Office extends AbstractEntity<Long> {
+public class Office extends AbstractEntity<Long> {
 	
 	@Column(name = "name", nullable = false, unique = true, length = 60)
 	private String name;
@@ -22,7 +22,7 @@ public abstract class Office extends AbstractEntity<Long> {
 	private Department department;
 	
 	@OneToMany(mappedBy = "office")
-	private List<Employee> employee;
+	private List<Employee> employees;
 
 	public String getName() {
 		return name;
@@ -40,11 +40,11 @@ public abstract class Office extends AbstractEntity<Long> {
 		this.department = department;
 	}
 
-	public List<Employee> getEmployee() {
-		return employee;
+	public List<Employee> getEmployees() {
+		return employees;
 	}
 
-	public void setEmployee(List<Employee> employee) {
-		this.employee = employee;
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
 	}
 }

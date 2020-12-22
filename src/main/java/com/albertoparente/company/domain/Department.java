@@ -16,7 +16,7 @@ public class Department extends AbstractEntity<Long> {
 	private String name;
 	
 	@OneToMany(mappedBy = "department")
-	private List<Office> office; 
+	private List<Office> offices; 
 	
 	public String getName() {
 		return name;
@@ -26,11 +26,11 @@ public class Department extends AbstractEntity<Long> {
 		this.name = name;
 	}
 
-	public List<Office> getOffice() {
-		return office;
+	public List<Office> getOffices() {
+		return offices;
 	}
 
-	public void setOffice(List<Office> office) {
-		this.office = office;
+	public void setOffices(List<Office> offices) {
+		this.offices = offices;
 	}
 }
