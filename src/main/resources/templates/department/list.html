@@ -39,10 +39,10 @@
 							<td th:text="${list.id}"></td>
 							<td th:text="${list.name}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" th:href="@{/departments/edit/{id} (id=${list.id})}" role="button">
+								<a class="btn btn-info btn-sm" th:href="@{/department/edit/{id} (id=${list.id})}" role="button">
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 								</a>
-								<button th:id="${'btn_departments/delete/' + list.id}" type="button" class="btn btn-danger btn-sm"
+								<button th:id="${'btn_department/delete/' + list.id}" type="button" class="btn btn-danger btn-sm"
 										data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir"
 										aria-hidden="true"></span>
