@@ -33,10 +33,10 @@
 							th:field="*{name}"/>
 					</div>
 					<div class="form-group col-md-4">
-						<label for="departamento">Departamento</label>
-						<select id="departamento" class="form-control" th:field="*{department}">
+						<label for="department">Departamento</label>
+						<select id="department" class="form-control" th:field="*{department}">
 							<option value="">Selecione</option>
-							<option th:each="list : ${departments}" th:value="${list.id}" th:text="${list.name}">Administração</option>
+							<option th:each="list : ${departments}" th:value="${list.id}" th:text="${list.name}"></option>
 						</select>
 					</div>
 				</div>

@@ -31,7 +31,7 @@ public class DepartmentController {
 	}
 	
 	@PostMapping("/save")
-	public String salve(Department department, RedirectAttributes attr) {
+	public String departmentSave(Department department, RedirectAttributes attr) {
 		departmentService.save(department);
 		attr.addFlashAttribute("success", "Departamento inserido com sucesso.");
 		return "redirect:/department/register";
@@ -47,16 +47,16 @@ public class DepartmentController {
 	public String departmentEdit(Department department, RedirectAttributes attr) {
 		departmentService.update(department);
 		attr.addFlashAttribute("success", "Departamento editado com sucesso.");
-		return "redirect:/department/register";
+		return "redirect:/department/list";
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String departmentDelete(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
-		if(!departmentService.departmentContainsOffice(id)) {
+		if(departmentService.departmentContainsOffice(id)) {
 			model.addAttribute("fail","Falha ao remover. Departamento possui cargo(s) vinculado(s).");			 
 		} else {
 			departmentService.delete(id);
-			attr.addFlashAttribute("success","Departamento excluído com sucesso.");	
+			model.addAttribute("success","Departamento excluído com sucesso.");	
 		}
 		return departmentList(model);
 	}
