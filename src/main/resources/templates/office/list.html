@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html layout:decorate="~{layout}">
 
 <head>
@@ -36,11 +36,11 @@
 					</thead>
 					<tbody>
 						<tr th:each="list : ${offices}">
-							<td th:text="${list.id}">1</td>
-							<td th:text="${list.name}">Auxiliar Contábil</td>
-							<td th:text="${list.department.name}">Contabilidade</td>
+							<td th:text="${list.id}"></td>
+							<td th:text="${list.name}"></td>
+							<td th:text="${list.department.name}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" href="/office/editar/1" role="button">
+								<a class="btn btn-info btn-sm" th:href="@{/office/edit/{id} (id=${list.id})}" role="button">
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 								</a>
 								<button type="button" class="btn btn-danger btn-sm">
