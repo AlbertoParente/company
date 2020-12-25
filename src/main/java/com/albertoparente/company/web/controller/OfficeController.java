@@ -57,6 +57,17 @@ public class OfficeController {
 		return "redirect:/department/list";
 	}
 	
+	@GetMapping("/delete/{id}")
+	public String officeDelete(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
+		if(officeService.officeContainsEmployee(id)) {
+			model.addAttribute("fail","Falha ao remover. Office possui cargo(s) vinculado(s).");			 
+		} else {
+			officeService.delete(id);
+			model.addAttribute("success","Office excluído com sucesso.");	
+		}
+		return officeList(model);
+	}
+	
 	@ModelAttribute("departments")
 	public List<Department>	listDepartment() {
 		return departmentService.findAll();

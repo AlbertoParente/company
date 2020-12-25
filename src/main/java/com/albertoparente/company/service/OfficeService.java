@@ -14,4 +14,6 @@ void save(Office office);
 	Office findById(Long id);
 	
 	List<Office> findAll();
+	
+	boolean officeContainsEmployee(Long id);
 }

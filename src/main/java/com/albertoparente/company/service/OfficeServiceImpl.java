@@ -41,4 +41,12 @@ public class OfficeServiceImpl implements OfficeService {
 	public List<Office> findAll() {
 		return officeDao.findAll();
 	}
+
+	@Override
+	public boolean officeContainsEmployee(Long id) {
+		if(findById(id.getEmployee().isEmpty())) {
+			return false;
+		}
+		return tre;
+	}
 }
