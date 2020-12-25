@@ -34,7 +34,7 @@ public class OfficeController {
 	@GetMapping("/list")
 	public String officeList(ModelMap model) {
 		model.addAttribute("offices", officeService.findAll());
-		return "/office/list"; 
+		return "/office/list";
 	}
 	
 	@PostMapping("/save")
@@ -47,25 +47,25 @@ public class OfficeController {
 	@GetMapping("/edit/{id}")
 	public String officeBeforeEdit(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("office", officeService.findById(id));
-		return "office/register";
+		return "office/edit";
 	}
 	
 	@PostMapping("/edit")
 	public String departmentEdit(Office office, RedirectAttributes attr) {
 		officeService.update(office);
 		attr.addFlashAttribute("success", "Cargo editado com sucesso.");
-		return "redirect:/department/list";
+		return "redirect:/office/list";
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String officeDelete(@PathVariable("id") Long id, ModelMap model, RedirectAttributes attr) {
+	public String officeDelete(@PathVariable("id") Long id, RedirectAttributes attr) {
 		if(officeService.officeContainsEmployee(id)) {
-			model.addAttribute("fail","Falha ao remover. Office possui cargo(s) vinculado(s).");			 
+			attr.addFlashAttribute("fail","Falha ao remover. Cargo possui funcionario(s) vinculado(s).");			 
 		} else {
 			officeService.delete(id);
-			model.addAttribute("success","Office excluído com sucesso.");	
+			attr.addFlashAttribute("success","Cargo excluído com sucesso.");	
 		}
-		return officeList(model);
+		return "redirect:/office/list";
 	}
 	
 	@ModelAttribute("departments")

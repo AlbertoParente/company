@@ -44,9 +44,9 @@ public class OfficeServiceImpl implements OfficeService {
 
 	@Override
 	public boolean officeContainsEmployee(Long id) {
-		if(findById(id.getEmployee().isEmpty())) {
+		if(findById(id).getEmployees().isEmpty()) {
 			return false;
 		}
-		return tre;
+		return true;
 	}
 }

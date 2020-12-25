@@ -43,7 +43,7 @@
 								<a class="btn btn-info btn-sm" th:href="@{/office/edit/{id} (id=${list.id})}" role="button">
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 								</a>
-								<button type="button" class="btn btn-danger btn-sm">
+								<button th:id="${#strings.concat('btn_office/delete/', list.id)}" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Exclusão desabilitada"
 										aria-hidden="true"></span>
 								</button>
@@ -53,7 +53,7 @@
 				</table>
 			</div>
 		</div>
-
+		<div th:replace="fragments/modal :: modal"></div>
 	</section>
 </body>
 
