@@ -27,7 +27,7 @@ public class EmployeeController {
 	private OfficeService officeService;
 	
 	@GetMapping("/register")
-	public String employeeRegister() {
+	public String employeeRegister(Employee employee) {
 		return "/employee/register";
 	}
 	
@@ -43,7 +43,7 @@ public class EmployeeController {
 		return "redirect:/employee/register";
 	}
 	
-	@ModelAttribute("departments")
+	@ModelAttribute("Offices")
 	public List<Office>	listOffice() {
 		return officeService.findAll();
 	}

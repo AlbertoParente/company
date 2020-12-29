@@ -48,14 +48,14 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="dataEntrada">Data de Entrada</label>
-						<input type="date" class="form-control" id="dataEntrada" th:field="admissionDate"/>
+						<input type="date" class="form-control" id="dataEntrada" th:field="*{admissionDate}"/>
 						<div class="invalid-feedback">
 
 						</div>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="dataSaida">Data de Saída</label>
-						<input type="date" class="form-control" id="dataSaida" th:field="resignationDate"/>
+						<input type="date" class="form-control" id="dataSaida" th:field="*{resignationDate}"/>
 						<div class="invalid-feedback">
 
 						</div>
@@ -117,7 +117,7 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="uf">UF</label>
-						<select id="uf" class="form-control" th:field="address.uf">
+						<select id="uf" class="form-control" th:field="*{address.uf}">
 							<option value="">Selecione...</option>
 							<option th:each="listUf : ${Uf}" th:value="${listUf}" th:text="${listUf.initials}"></option>
 						</select>
@@ -127,7 +127,7 @@
 					</div>
 					<div class="form-group col-md-2">
 						<label for="cep">CEP</label>
-						<input type="text" class="form-control" id="cep" data-mask="00000-000" th:field="address.postalCode"/>
+						<input type="text" class="form-control" id="cep" data-mask="00000-000" th:field="*{address.postalCode}"/>
 						<div class="invalid-feedback">
 	
 						</div>
