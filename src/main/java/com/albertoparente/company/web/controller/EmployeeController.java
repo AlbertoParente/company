@@ -35,7 +35,7 @@ public class EmployeeController {
 	@GetMapping("/list")
 	public String employeeList(ModelMap model) {
 		model.addAttribute("employees", employeeService.findAll());
-		return "/employee/list"; 
+		return "/employee/list";
 	}
 	
 	@PostMapping("/save")
@@ -45,12 +45,12 @@ public class EmployeeController {
 		return "redirect:/employee/register";
 	}
 	
-	@ModelAttribute("Offices")
+	@ModelAttribute("offices")
 	public List<Office>	getOffices() {
 		return officeService.findAll();
 	}
 	
-	@ModelAttribute("uf")
+	@ModelAttribute("ufs")
 	public Uf[] getUf() {
 		return Uf.values();
 	}

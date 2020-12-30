@@ -11,7 +11,7 @@ import com.albertoparente.company.service.DepartmentService;
 public class SpringToDepartmentConverter implements Converter<String, Department> {
 
 	@Autowired
-	DepartmentService departmentService;
+	private DepartmentService departmentService;
 	
 	@Override
 	public Department convert(String text) {
