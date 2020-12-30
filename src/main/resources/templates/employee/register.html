@@ -66,7 +66,7 @@
 						<label for="cargo">Cargo</label>
 						<select id="cargo" class="form-control" th:field=*{office}>
 							<option value="">Selecione...</option>
-							<option th:each="list : ${office}" th:value=${list.id} th:text=${list.name}>Selecione...</option>
+							<option th:each="list : ${offices}" th:value="${list.id}" th:text="${list.name}">Selecione...</option>
 						</select>
 						<div class="invalid-feedback">
 
