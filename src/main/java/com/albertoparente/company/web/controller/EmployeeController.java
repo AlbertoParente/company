@@ -18,6 +18,8 @@ import com.albertoparente.company.domain.Uf;
 import com.albertoparente.company.service.EmployeeService;
 import com.albertoparente.company.service.OfficeService;
 
+// test
+
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -33,6 +35,7 @@ public class EmployeeController {
 		return "/employee/register";
 	}
 	
+	/*
 	@GetMapping("/list")
 	public String employeeList(ModelMap model) {
 		model.addAttribute("employees", employeeService.findAll());
@@ -66,5 +69,5 @@ public class EmployeeController {
 	@ModelAttribute("ufs")
 	public Uf[] getUf() {
 		return Uf.values();
-	}
+	}*/
 }
