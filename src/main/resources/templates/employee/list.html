@@ -111,12 +111,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Jorge da Silva</td>
-							<td>R$ 3.500,99</td>
-							<td>Recursos Humanos</td>
-							<td>Auxiliar de RH</td>
+						<tr th:each="list : ${employee}">
+							<td th:text="${list.id}" ></td>
+							<td th:text="${list.name}"></td>
+							<td th:text="|R$ ${{list.salaty}}|"></td>
+							<td th:text="${list.office.department.name}"></td>
+							<td th:text="${list.office.name}"></td>
 							<td>
 								<button type="button" class="btn btn-secondary btn-sm" data-container="body"
 									data-toggle="popover" data-placement="top"
