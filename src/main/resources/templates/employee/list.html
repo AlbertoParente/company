@@ -41,9 +41,9 @@
 					<div class="collapse" id="collapseNome">
 
 						<nav class="navbar navbar-light bg-light">
-							<form class="form-inline" method="GET" action="/employee/buscar/nome">
+							<form class="form-inline" method="GET" action="/employee/search/name">
 								<input class="form-control mr-sm-2" type="search" placeholder="nome" aria-label="Search"
-									name="nome" />
+									name="name"/>
 								<button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 							</form>
 						</nav>
@@ -54,10 +54,9 @@
 			<div class="row">
 				<div class="col">
 					<div class="collapse" id="collapseCargo">
-
 						<nav class="navbar navbar-light bg-light">
-							<form class="form-inline" method="GET" action="/employee/buscar/cargo">
-								<select class="form-control mr-sm-2" name="cargo" aria-label="Search">
+							<form class="form-inline" method="GET" action="/employee/search/office">
+								<select class="form-control mr-sm-2" name="office" aria-label="Search">
 									<option value="">Cargo</option>
 									<option value="1">Auxiliar Contábil</option>
 									<option value="2">Auxiliar Administrativo</option>
@@ -83,9 +82,9 @@
 					<div class="collapse" id="collapseData">
 
 						<nav class="navbar navbar-light bg-light">
-							<form class="form-inline" method="GET" action="/employee/buscar/data">
-								<input class="form-control mr-sm-2" type="date" aria-label="Search" name="entrada" />
-								<input class="form-control mr-sm-2" type="date" aria-label="Search" name="saida" />
+							<form class="form-inline" method="GET" action="/employee/search/data">
+								<input class="form-control mr-sm-2" type="date" aria-label="Search" name="admission" />
+								<input class="form-control mr-sm-2" type="date" aria-label="Search" name="resignation" />
 								<button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 							</form>
 						</nav>
@@ -93,7 +92,6 @@
 					</div>
 				</div>
 			</div>
-
 
 			<div class="table-responsive">
 				<table class="table table-striped table-hover table-sm">
@@ -120,17 +118,25 @@
 							<td>
 								<button type="button" class="btn btn-secondary btn-sm" data-container="body"
 									data-toggle="popover" data-placement="top"
-									data-content="Rua das Oliveiras, 260 Fundos - Centro, Porto Alegre - RS - 97050-015">
+									th:attr="data-content=${#strings.concat(
+									list.address.address, ', ',
+									list.address.number, ' ',
+									list.address.complement, ' - ',
+									list.address.district, ', ',
+									list.address.city, ' - ',
+									list.address.uf.acronym, ' - ',
+									list.address.postalCode
+									)}">
 									<span class="oi oi-eye" title="Visualizar" aria-hidden="true"></span>
 								</button>
 							</td>
-							<td>01/10/2014</td>
-							<td></td>
+							<td th:text="${#temporals.format(list.admissionDate, 'dd/MM/yyyy')}"></td>
+							<td th:text="${#temporals.format(list.resignationDate, 'dd/MM/yyyy')}"></td>
 							<td colspan="2">
-								<a class="btn btn-info btn-sm" href="/employee/editar/1" role="button">
+								<a class="btn btn-info btn-sm" href="/employee/edit/1" role="button">
 									<span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
 								</a>
-								<button id="btn_funcionarios/excluir/1" type="button" class="btn btn-danger btn-sm"
+								<button id="btn_employee/delete/1" type="button" class="btn btn-danger btn-sm"
 									data-toggle="modal" data-target="#myModal">
 									<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
 								</button>
