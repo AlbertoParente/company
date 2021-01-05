@@ -109,10 +109,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="list : ${employee}">
+						<tr th:each="list : ${employees}">
 							<td th:text="${list.id}" ></td>
 							<td th:text="${list.name}"></td>
-							<td th:text="|R$ ${{list.salaty}}|"></td>
+							<td th:text="|R$ ${{list.salary}}|"></td>
 							<td th:text="${list.office.department.name}"></td>
 							<td th:text="${list.office.name}"></td>
 							<td>
