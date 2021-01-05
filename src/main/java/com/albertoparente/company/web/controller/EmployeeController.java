@@ -46,15 +46,23 @@ public class EmployeeController {
 		return "redirect:/employee/register";
 	}
 	
+	@GetMapping("/edit/{id}")
+	public String employeeBeforeEdit(@PathVariable("id") Long id, ModelMap model) {
+		model.addAttribute("employee", employeeService.findById(id));
+		return "employee/register";
+	}
+	
 	@PostMapping("/edit")
 	public String employeeEdit(Employee employee, RedirectAttributes attr) {
 		employeeService.update(employee);
 		attr.addFlashAttribute("success", "Funcionario editado com sucesso.");
-		return "redirect:/employee/list";
+		return "redirect:/employee/register";
 	}
 	
 	@GetMapping("/delete/{id}")
 	public String employeeDelete(@PathVariable("id") Long id, RedirectAttributes attr) {
+		employeeService.delete(id);
+		attr.addFlashAttribute("success", "Funcionario excluído com sucesso.");
 		return "redirect:/employee/list";
 	}
 	
