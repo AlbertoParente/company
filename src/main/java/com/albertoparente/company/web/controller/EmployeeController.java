@@ -49,7 +49,7 @@ public class EmployeeController {
 	@GetMapping("/edit/{id}")
 	public String employeeBeforeEdit(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("employee", employeeService.findById(id));
-		return "employee/register";
+		return "employee/edit";
 	}
 	
 	@PostMapping("/edit")
