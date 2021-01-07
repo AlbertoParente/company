@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.albertoparente.company.domain.Employee;
@@ -64,6 +65,12 @@ public class EmployeeController {
 		employeeService.delete(id);
 		attr.addFlashAttribute("success", "Funcionario excluído com sucesso.");
 		return "redirect:/employee/list";
+	}
+	
+	@GetMapping("/search/name")
+	public String searchForName(@RequestParam("name") String name, ModelMap model) {
+		model.addAttribute("employees", employeeService.findByName(name));
+		return "/employee/list";
 	}
 	
 	@ModelAttribute("offices")

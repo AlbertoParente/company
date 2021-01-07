@@ -14,4 +14,6 @@ public interface EmployeeDao {
 	Employee findById(Long id);
 	
 	List<Employee> findAll();
+
+	List<Employee> findByName(String name);
 }

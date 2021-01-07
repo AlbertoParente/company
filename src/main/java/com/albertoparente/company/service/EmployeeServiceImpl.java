@@ -41,5 +41,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Transactional(readOnly = true)
 	public List<Employee> findAll() {
 		return employeeDao.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Employee> findByName(String name) {
+		return employeeDao.findByName(name);
 	}	
 }
