@@ -73,6 +73,12 @@ public class EmployeeController {
 		return "/employee/list";
 	}
 	
+	@GetMapping("/search/office")
+	public String searchForOffice(@RequestParam("id") Long id, ModelMap model) {
+		model.addAttribute("employees", employeeService.findByOffice(id));
+		return "/employee/list";
+	}
+	
 	@ModelAttribute("offices")
 	public List<Office>	getOffices() {
 		return officeService.findAll();

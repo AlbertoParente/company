@@ -16,4 +16,6 @@ public interface EmployeeService {
 	List<Employee> findAll();
 
 	List<Employee> findByName(String name);
+
+	List<Employee> findByOffice(Long id);
 }
