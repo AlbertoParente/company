@@ -10,7 +10,6 @@ import com.albertoparente.company.domain.Employee;
 @Repository
 public class EmployeeDaoImpl extends AbstractDao<Employee, Long> implements EmployeeDao {
 
-	@Override
 	public List<Employee> findByName(String name) {
 		/*
 		TypedQuery<Employee> query = getEntityManager()
@@ -18,7 +17,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee, Long> implements Empl
 		query.setParameter("name", name);
 		return query.getResultList();
 		*/
-		return createQuery("Select e from EMPLOYEE e where e.name like concat('%', ?1, '%')", name);
+		return createQuery("select e from Employee e where e.name like concat('%', ?1, '%') ", name);
 	}
 	
 }
