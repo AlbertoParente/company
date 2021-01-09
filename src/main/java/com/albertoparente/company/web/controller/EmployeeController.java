@@ -1,8 +1,11 @@
 package com.albertoparente.company.web.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,6 +79,14 @@ public class EmployeeController {
 	@GetMapping("/search/office")
 	public String searchForOffice(@RequestParam("id") Long id, ModelMap model) {
 		model.addAttribute("employees", employeeService.findByOffice(id));
+		return "/employee/list";
+	}
+	
+	@GetMapping("/search/date")
+	public String searchForDate(@RequestParam(name = "admissionDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate admissionDate, 
+			                    @RequestParam(name = "resignationDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate resignationDate, 
+			                    ModelMap model) {
+		model.addAttribute("employees", employeeService.findByDate(admissionDate, resignationDate));
 		return "/employee/list";
 	}
 	

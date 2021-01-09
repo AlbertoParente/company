@@ -73,9 +73,9 @@
 					<div class="collapse" id="collapseData">
 
 						<nav class="navbar navbar-light bg-light">
-							<form class="form-inline" method="GET" action="/employee/search/data">
-								<input class="form-control mr-sm-2" type="date" aria-label="Search" name="admission" />
-								<input class="form-control mr-sm-2" type="date" aria-label="Search" name="resignation" />
+							<form class="form-inline" method="GET" th:action="@{/employee/search/date}">
+								<input class="form-control mr-sm-2" type="date" aria-label="Search" th:name="admissionDate" />
+								<input class="form-control mr-sm-2" type="date" aria-label="Search" th:name="resignationDate" />
 								<button class="btn btn-outline-success my-2 my-sm-0">Search</button>
 							</form>
 						</nav>

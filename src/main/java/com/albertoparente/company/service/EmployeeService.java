@@ -1,5 +1,6 @@
 package com.albertoparente.company.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import com.albertoparente.company.domain.Employee;
 
@@ -18,4 +19,6 @@ public interface EmployeeService {
 	List<Employee> findByName(String name);
 
 	List<Employee> findByOffice(Long id);
+
+	List<Employee> findByDate(LocalDate admissionDate, LocalDate resignationDate);
 }

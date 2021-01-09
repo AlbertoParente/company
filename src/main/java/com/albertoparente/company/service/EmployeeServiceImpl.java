@@ -1,5 +1,7 @@
 package com.albertoparente.company.service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +54,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public List<Employee> findByOffice(Long id) {
 		return employeeDao.findByOffice(id);
+	}
+
+	@Override
+	public List<Employee> findByDate(LocalDate admissionDate, LocalDate resignationDate) {
+		if(admissionDate != null && resignationDate != null ) {
+			return employeeDao.findByAdmissionDateResignationDate(admissionDate, resignationDate);
+		} else if (admissionDate != null) {
+			return employeeDao.findByAdmissionDate(admissionDate);
+		} else if (resignationDate != null) {
+			return employeeDao.findByResignationDate(resignationDate);
+		} else {
+			return new ArrayList<>();
+		}
 	}	
 }
