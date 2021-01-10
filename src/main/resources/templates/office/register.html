@@ -24,8 +24,13 @@
 		</nav>
 
 		<div class="container" id="cadastro">
+		
 			<div th:replace="fragments/alert"></div>
+			
 			<form th:action="${office.id == null} ? @{/office/save} : @{/office/edit}" th:object="${office}" method="POST">
+			
+				<div th:replace="fragments/validation :: validation"></div>
+				
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="nome">Nome do Cargo</label>

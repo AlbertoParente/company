@@ -2,9 +2,12 @@ package com.albertoparente.company.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +41,9 @@ public class OfficeController {
 	}
 	
 	@PostMapping("/save")
-	public String officeSave(Office office, RedirectAttributes attr) {
+	public String officeSave(@Valid Office office, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors()) return "/office/register";
+		
 		officeService.save(office);
 		attr.addFlashAttribute("success", "Cargo inserido com sucesso.");
 		return "redirect:/office/register";
@@ -51,7 +56,9 @@ public class OfficeController {
 	}
 	
 	@PostMapping("/edit")
-	public String departmentEdit(Office office, RedirectAttributes attr) {
+	public String departmentEdit(@Valid Office office, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors()) return "/office/register";
+		
 		officeService.update(office);
 		attr.addFlashAttribute("success", "Cargo editado com sucesso.");
 		return "redirect:/office/list";

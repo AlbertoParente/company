@@ -1,8 +1,11 @@
 package com.albertoparente.company.web.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,7 +34,9 @@ public class DepartmentController {
 	}
 	
 	@PostMapping("/save")
-	public String departmentSave(Department department, RedirectAttributes attr) {
+	public String departmentSave(@Valid Department department, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors()) return "/department/register";
+		
 		departmentService.save(department);
 		attr.addFlashAttribute("success", "Departamento inserido com sucesso.");
 		return "redirect:/department/register";
@@ -44,7 +49,9 @@ public class DepartmentController {
 	}
 	
 	@PostMapping("/edit")
-	public String departmentEdit(Department department, RedirectAttributes attr) {
+	public String departmentEdit(@Valid Department department, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors()) return "/department/register";
+		
 		departmentService.update(department);
 		attr.addFlashAttribute("success", "Departamento editado com sucesso.");
 		return "redirect:/department/list";
