@@ -10,6 +10,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -21,13 +26,18 @@ import org.springframework.format.annotation.NumberFormat.Style;
 @Table(name = "EMPLOYEE")
 public class Employee extends AbstractEntity<Long> {
 
+	@NotBlank
+	@Size(max = 255, min = 3)
 	@Column(name = "name", nullable = false, unique = true)
 	private String name;
 	
+	@NotNull
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
 	@Column(name= "salary", nullable = false, columnDefinition = "DECIMAL (7,2) DEFAULT 0.00")
 	private BigDecimal salary;
 	
+	@NotNull
+	@PastOrPresent(message = "{PastOrPresent.employee.admissionDate}")
 	@DateTimeFormat(iso = ISO.DATE)
 	@Column(name = "admission_date", nullable = false, columnDefinition = "DATE")
 	private LocalDate admissionDate;
@@ -36,10 +46,12 @@ public class Employee extends AbstractEntity<Long> {
 	@Column(name = "resignation_date", columnDefinition = "DATE")
 	private LocalDate resignationDate;
 	
+	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id_fk")
 	private Address address;
 	
+	@NotNull(message = "{NotNull.employee.office}")
 	@ManyToOne
 	@JoinColumn(name = "office_id_fk")
 	private Office office;

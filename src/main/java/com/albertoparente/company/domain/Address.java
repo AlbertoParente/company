@@ -5,31 +5,44 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "ADDRESSES")
 public class Address extends AbstractEntity<Long> {
 	
+	@NotBlank
+	@Size(min = 3, max = 255)
 	@Column(name= "address", nullable = false)
 	private String address;
 	
 	@Column(name= "complement")
 	private String complement;
 	
+	@NotNull(message = "{NotNull.address.number}")
 	@Column(name= "number", nullable = false, length = 5)
 	private Integer number;
 	
+	@NotBlank
+	@Size(min = 3, max = 255)
 	@Column(name= "district", nullable = false)
 	private String district;
 	
+	@NotBlank
+	@Size(min = 3, max = 255)
 	@Column(name= "city", nullable = false)
 	private String city;
 	
+	@NotNull(message = "{NotNull.address.uf}")
 	@Column(name= "uf", nullable = false, length = 2)
 	@Enumerated(EnumType.STRING)
 	private Uf uf;
 	
+	@NotBlank
+	@Size(min = 9, max = 9,  message = "{Size.address.postalCode}")
 	@Column(name= "postal_code", nullable = false, length = 9)
 	private String postalCode;
 

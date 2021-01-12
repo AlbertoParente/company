@@ -3,10 +3,13 @@ package com.albertoparente.company.web.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,7 +46,9 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/save")
-	public String emplooyeeSave(Employee employee, RedirectAttributes attr) {
+	public String emplooyeeSave(@Valid Employee employee, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors()) return "/employee/register";
+		
 		employeeService.save(employee);
 		attr.addFlashAttribute("success", "Funcionário inserido com sucesso.");
 		return "redirect:/employee/register";
@@ -56,7 +61,9 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/edit")
-	public String employeeEdit(Employee employee, RedirectAttributes attr) {
+	public String employeeEdit(@Valid Employee employee, BindingResult result, RedirectAttributes attr) {
+		if(result.hasErrors()) return "/employee/register";
+		
 		employeeService.update(employee);
 		attr.addFlashAttribute("success", "Funcionario editado com sucesso.");
 		return "redirect:/employee/register";
