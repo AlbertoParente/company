@@ -74,7 +74,7 @@ public class EmployeeController {
 		
 		employeeService.update(employee);
 		attr.addFlashAttribute("success", "Funcionario editado com sucesso.");
-		return "redirect:/employee/register";
+		return "redirect:/employee/list";
 	}
 	
 	@GetMapping("/delete/{id}")
