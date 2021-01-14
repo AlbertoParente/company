@@ -10,7 +10,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,7 @@ import com.albertoparente.company.domain.Office;
 import com.albertoparente.company.domain.Uf;
 import com.albertoparente.company.service.EmployeeService;
 import com.albertoparente.company.service.OfficeService;
+import com.albertoparente.company.web.validator.EmployeeValidator;
 
 @Controller
 @RequestMapping("/employee")
@@ -33,6 +36,11 @@ public class EmployeeController {
 	
 	@Autowired
 	private OfficeService officeService;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.addValidators(new EmployeeValidator());
+	}
 	
 	@GetMapping("/register")
 	public String employeeRegister(Employee employee) {
