@@ -13,12 +13,12 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
 						<i class="oi oi-caret-right"></i>
-						<span>Cadastrar Departamentos</span>
+						<span th:text="${department.id >= 1} ? #{department.span.departmentEdit} : #{department.span.departmentRegister}"></span>
 					</li>
 				</ul>
 				<a class="btn btn-primary btn-md" href="/department/list" role="button">
 					<span class="oi oi-spreadsheet" title="Listar" aria-hidden="true"></span>
-					<span>Listar Departamentos</span>
+					<span th:text="#{department.span.departmentList}"></span>
 				</a>
 			</div>
 		</nav>
@@ -27,19 +27,19 @@
 		
 			<div th:replace="fragments/alert"></div>
 			
-			<form th:action="${department.id == null} ? @{/department/save} : @{/departments/edit}" th:object="${department}" method="POST">
+			<form th:action="${department.id == null} ? @{/department/save} : @{/department/edit}" th:object="${department}" method="POST">
 				  
 				<div th:replace="fragments/validation :: validation"></div>
 				
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label for="nome">Departamento</label>
+						<label for="nome" th:text="#{label.department}"></label>
 						<input type="text" class="form-control" id="nome" placeholder="Nome Departamento"
 							autofocus="autofocus" th:field="*{name}"/>
 					</div>
 				</div>
 				<input type="hidden" id="id" th:field="*{id}"/>
-				<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+				<button type="submit" class="btn btn-primary btn-sm" th:text="#{button.save}"></button>
 			</form>
 		</div>
 	</section>

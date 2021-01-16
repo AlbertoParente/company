@@ -45,7 +45,7 @@ public class DepartmentController {
 	@GetMapping("/edit/{id}")
 	public String departmentBeforeEdit(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("department", departmentService.findById(id));
-		return "department/edit";
+		return "department/register";
 	}
 	
 	@PostMapping("/edit")
