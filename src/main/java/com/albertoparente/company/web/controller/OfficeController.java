@@ -52,7 +52,7 @@ public class OfficeController {
 	@GetMapping("/edit/{id}")
 	public String officeBeforeEdit(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("office", officeService.findById(id));
-		return "office/edit";
+		return "office/register";
 	}
 	
 	@PostMapping("/edit")
