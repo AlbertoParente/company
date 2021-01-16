@@ -13,7 +13,7 @@
 					<ul class="navbar-nav">
 						<li class="nav-item active">
 							<i class="oi oi-caret-right"></i>
-							<span th:text="#{employee.span.employeeRegister}"></span>
+							<span th:text="${employee.id >= 1} ? #{employee.span.employeeEdit} : #{employee.span.employeeRegister}"></span>
 						</li>
 					</ul>
 				</div>

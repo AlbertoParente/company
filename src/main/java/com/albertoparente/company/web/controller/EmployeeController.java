@@ -65,7 +65,7 @@ public class EmployeeController {
 	@GetMapping("/edit/{id}")
 	public String employeeBeforeEdit(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("employee", employeeService.findById(id));
-		return "employee/edit";
+		return "employee/register";
 	}
 	
 	@PostMapping("/edit")
