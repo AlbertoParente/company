@@ -16,7 +16,7 @@
 						<span th:text="${department.id >= 1} ? #{department.span.departmentEdit} : #{department.span.departmentRegister}"></span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" href="/department/list" role="button">
+				<a class="btn btn-primary btn-md" th:href="@{/department/list}" role="button">
 					<span class="oi oi-spreadsheet" title="Listar" aria-hidden="true"></span>
 					<span th:text="#{department.span.departmentList}"></span>
 				</a>

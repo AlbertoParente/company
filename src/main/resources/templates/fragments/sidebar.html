@@ -8,7 +8,7 @@
 <body>
 	<nav class="sidebar sidebar-open" th:fragment="sidebar">
 		<ul class="nav nav-pills">
-			<li class="nav-item"><a class="nav-link " href="/"> <i class="oi oi-home"></i> 
+			<li class="nav-item"><a class="nav-link " th:href="@{/}"> <i class="oi oi-home"></i> 
 					<span th:text="#{sidebar.span.home}"></span>
 				</a></li>
 		</ul>
@@ -18,27 +18,27 @@
 			<li class="nav-item"><a class="nav-link" href="/department/register"> <i class="oi oi-plus"></i>
 					<span th:text="#{sidebar.span.register}"></span>
 				</a></li>
-			<li class="nav-item"><a class="nav-link" href="/department/list"> <i class="oi oi-spreadsheet"></i>
+			<li class="nav-item"><a class="nav-link" th:href="@{/department/list}"> <i class="oi oi-spreadsheet"></i>
 					<span th:text="#{sidebar.span.list}"></span>
 				</a></li>
 		</ul>
 
 		<ul class="nav nav-pills">
 			<li class="nav-item"><span class="nav-link active" th:text="#{sidebar.span.office}"></span></li>
-			<li class="nav-item"><a class="nav-link" href="/office/register"> <i class="oi oi-plus"></i> 
+			<li class="nav-item"><a class="nav-link" th:href="@{/office/register}"> <i class="oi oi-plus"></i> 
 					<span th:text="#{sidebar.span.register}"></span>
 				</a></li>
-			<li class="nav-item"><a class="nav-link" href="/office/list"> <i class="oi oi-spreadsheet"></i> 
+			<li class="nav-item"><a class="nav-link" th:href="@{/office/list}"> <i class="oi oi-spreadsheet"></i> 
 					<span th:text="#{sidebar.span.list}"></span>
 				</a></li>
 		</ul>
 
 		<ul class="nav nav-pills">
 			<li class="nav-item"><span class="nav-link active" th:text="#{sidebar.span.employee}"></span></li>
-			<li class="nav-item"><a class="nav-link" href="/employee/register"> <i class="oi oi-plus"></i>
+			<li class="nav-item"><a class="nav-link" th:href="@{/employee/register}"> <i class="oi oi-plus"></i>
 					<span th:text="#{sidebar.span.register}"></span>
 				</a></li>
-			<li class="nav-item"><a class="nav-link" href="/employee/list"> <i class="oi oi-spreadsheet"></i>
+			<li class="nav-item"><a class="nav-link" th:href="@{/employee/list}"> <i class="oi oi-spreadsheet"></i>
 					<span th:text="#{sidebar.span.list}"></span>
 				</a></li>
 		</ul>
