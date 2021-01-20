@@ -44,18 +44,18 @@ public class EmployeeController {
 	
 	@GetMapping("/register")
 	public String employeeRegister(Employee employee) {
-		return "/employee/register";
+		return "employee/register";
 	}
 	
 	@GetMapping("/list")
 	public String employeeList(ModelMap model) {
 		model.addAttribute("employees", employeeService.findAll());
-		return "/employee/list";
+		return "employee/list";
 	}
 	
 	@PostMapping("/save")
 	public String emplooyeeSave(@Valid Employee employee, BindingResult result, RedirectAttributes attr) {
-		if(result.hasErrors()) return "/employee/register";
+		if(result.hasErrors()) return "employee/register";
 		
 		employeeService.save(employee);
 		attr.addFlashAttribute("success", "Funcionário inserido com sucesso.");
@@ -70,7 +70,7 @@ public class EmployeeController {
 	
 	@PostMapping("/edit")
 	public String employeeEdit(@Valid Employee employee, BindingResult result, RedirectAttributes attr) {
-		if(result.hasErrors()) return "/employee/register";
+		if(result.hasErrors()) return "employee/register";
 		
 		employeeService.update(employee);
 		attr.addFlashAttribute("success", "Funcionario editado com sucesso.");
@@ -87,13 +87,13 @@ public class EmployeeController {
 	@GetMapping("/search/name")
 	public String searchForName(@RequestParam("name") String name, ModelMap model) {
 		model.addAttribute("employees", employeeService.findByName(name));
-		return "/employee/list";
+		return "employee/list";
 	}
 	
 	@GetMapping("/search/office")
 	public String searchForOffice(@RequestParam("id") Long id, ModelMap model) {
 		model.addAttribute("employees", employeeService.findByOffice(id));
-		return "/employee/list";
+		return "employee/list";
 	}
 	
 	@GetMapping("/search/date")
@@ -101,7 +101,7 @@ public class EmployeeController {
 			                    @RequestParam(name = "resignationDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate resignationDate, 
 			                    ModelMap model) {
 		model.addAttribute("employees", employeeService.findByDate(admissionDate, resignationDate));
-		return "/employee/list";
+		return "employee/list";
 	}
 	
 	@ModelAttribute("offices")

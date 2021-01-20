@@ -31,13 +31,13 @@ public class OfficeController {
 	
 	@GetMapping("/register")
 	public String officeRegister(Office office) {
-		return "/office/register";
+		return "office/register";
 	}
 	
 	@GetMapping("/list")
 	public String officeList(ModelMap model) {
 		model.addAttribute("offices", officeService.findAll());
-		return "/office/list";
+		return "office/list";
 	}
 	
 	@PostMapping("/save")

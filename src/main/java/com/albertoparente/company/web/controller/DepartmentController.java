@@ -24,18 +24,18 @@ public class DepartmentController {
 	
 	@GetMapping("/register")
 	public String departmentRegister(Department department) {
-		return "/department/register";
+		return "department/register";
 	}
 	
 	@GetMapping("/list")
 	public String departmentList(ModelMap model) {
 		model.addAttribute("departments", departmentService.findAll());
-		return "/department/list";
+		return "department/list";
 	}
 	
 	@PostMapping("/save")
 	public String departmentSave(@Valid Department department, BindingResult result, RedirectAttributes attr) {
-		if(result.hasErrors()) return "/department/register";
+		if(result.hasErrors()) return "department/register";
 		
 		departmentService.save(department);
 		attr.addFlashAttribute("success", "Departamento inserido com sucesso.");
@@ -50,7 +50,7 @@ public class DepartmentController {
 	
 	@PostMapping("/edit")
 	public String departmentEdit(@Valid Department department, BindingResult result, RedirectAttributes attr) {
-		if(result.hasErrors()) return "/department/register";
+		if(result.hasErrors()) return "department/register";
 		
 		departmentService.update(department);
 		attr.addFlashAttribute("success", "Departamento editado com sucesso.");
