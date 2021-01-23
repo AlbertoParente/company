@@ -24,13 +24,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public void update(Employee employee) {
 		employeeDao.update(employee);
-		
 	}
 
 	@Override
 	public void delete(Long id) {
 		employeeDao.delete(id);
-		
 	}
 
 	@Override

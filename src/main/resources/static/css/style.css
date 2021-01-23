@@ -88,7 +88,7 @@ body {
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
 	color: #fff;
 	background-color: #007c91;
-	/*background-color: rgb(23, 162, 184);*/
+
 }
 
 .navbar {
@@ -97,19 +97,13 @@ body {
 
 .navbar-top {
 	background-color: #007c91;
-	/*background-color: rgb(23, 162, 184);*/
 	color:#fff;
 }
-
-/*
- * toogle do navbar do menu
- */ 
 
 .navbar-toggle {
     display: inline-block;
     margin-left: 10px;
 }
-
 
 .form-control-color {
   display: block;
@@ -148,7 +142,6 @@ body {
 /*
  * Modal
  */
-
 .modal-title {
 	display: block;
 	color: #FF0000;

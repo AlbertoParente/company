@@ -2,11 +2,9 @@ package com.albertoparente.company.dao;
 
 import java.time.LocalDate;
 import java.util.List;
-
-// import javax.persistence.TypedQuery;
-
 import org.springframework.stereotype.Repository;
 import com.albertoparente.company.domain.Employee;
+//import javax.persistence.TypedQuery;
 
 @Repository
 public class EmployeeDaoImpl extends AbstractDao<Employee, Long> implements EmployeeDao {
@@ -52,5 +50,4 @@ public class EmployeeDaoImpl extends AbstractDao<Employee, Long> implements Empl
 				.toString();
 		return createQuery(jpql, resignationDate);
 	}
-	
 }

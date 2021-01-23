@@ -1,10 +1,8 @@
 package com.albertoparente.company.web.validator;
 
 import java.time.LocalDate;
-
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
 import com.albertoparente.company.domain.Employee;
 
 public class EmployeeValidator implements Validator {
@@ -25,5 +23,4 @@ public class EmployeeValidator implements Validator {
 			}
 		}
 	}
-
 }

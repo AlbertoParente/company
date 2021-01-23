@@ -5,7 +5,7 @@ import com.albertoparente.company.domain.Office;
 
 public interface OfficeService {
 
-void save(Office office);
+	void save(Office office);
 	
 	void update(Office office);
 	

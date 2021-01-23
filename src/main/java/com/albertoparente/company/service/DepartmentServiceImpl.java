@@ -22,7 +22,6 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public void update(Department department) {
 		departmentDao.update(department);
-		
 	}
 
 	@Override

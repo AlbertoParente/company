@@ -1,7 +1,6 @@
 package com.albertoparente.company.domain;
 
 import java.io.Serializable;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,5 +50,4 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
 	public String toString() {
 		return "id = " + id;
 	}
-	
 }

@@ -27,7 +27,6 @@ public class OfficeServiceImpl implements OfficeService {
 	@Override
 	public void delete(Long id) {
 		officeDao.delete(id);
-		
 	}
 
 	@Override
