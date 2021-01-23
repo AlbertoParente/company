@@ -25,6 +25,7 @@ body {
 .layout-content {
     width: 100%;
     padding-top: 0px;
+    background-color: #eeeeee;
 }
 
 .container {
@@ -38,9 +39,8 @@ body {
 .sidebar {
     width: 0px;
     height: 100vh;
-    border-top: 1px solid #eee;
-    border-right: 1px solid #eee;    
-    background-color: #212121;
+    border-top: 1px solid #eee;  
+    background-color: #373737;
     flex-shrink: 0;
     overflow: hidden;
     transition: width .5s;
@@ -87,11 +87,18 @@ body {
  */
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
 	color: #fff;
-	background-color: #484848;
+	background-color: #007c91;
+	/*background-color: rgb(23, 162, 184);*/
 }
 
 .navbar {
 	background-color: #000000;
+}
+
+.navbar-top {
+	background-color: #007c91;
+	/*background-color: rgb(23, 162, 184);*/
+	color:#fff;
 }
 
 /*
@@ -101,6 +108,21 @@ body {
 .navbar-toggle {
     display: inline-block;
     margin-left: 10px;
+}
+
+
+.form-control-color {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 /*
@@ -113,8 +135,7 @@ body {
 	bottom: 0;
 	margin: 0;
 	height: 50px;
-	background-color: rgb(52,58,64);
-	border-top: 1px solid rgb(52,58,64);
+	background-color: #484848;
 }
 
 .footer-copy {

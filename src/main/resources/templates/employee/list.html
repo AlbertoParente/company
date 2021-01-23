@@ -7,7 +7,7 @@
 
 <body>
 	<section class="layout-content" layout:fragment="layout-body">
-		<nav class="navbar navbar-expand-md bg-light">
+		<nav class="navbar navbar-expand-md navbar-top">
 			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
@@ -15,7 +15,7 @@
 						<span th:text="#{employee.span.employeeList}"></span>
 					</li>
 				</ul>
-				<a class="btn btn-primary btn-md" th:href="@{/employee/register}" role="button">
+				<a class="btn btn-success btn-md" th:href="@{/employee/register}" role="button">
 					<span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
 					<span th:text="#{employee.span.employeeNew}"></span>
 				</a>
