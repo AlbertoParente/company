@@ -25,7 +25,9 @@
 		</div>
 
 		<div class="container" id="cadastro">
+		
 			<div th:replace="fragments/alert"></div>
+			
 			<form th:action="${employee.id == null} ? @{/employee/save} : @{/employee/edit}" th:object="${employee}" method="POST">
 				<div class="form-row">
 					<div class="form-group col-md-6">

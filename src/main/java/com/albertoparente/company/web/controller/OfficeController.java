@@ -39,7 +39,7 @@ public class OfficeController {
 	
 	@PostMapping("/save")
 	public String officeSave(@Valid Office office, BindingResult result, RedirectAttributes attr) {
-		if(result.hasErrors()) return "/office/register";
+		if(result.hasErrors()) return "office/register";
 		
 		officeService.save(office);
 		attr.addFlashAttribute("success", "Cargo inserido com sucesso.");
@@ -54,7 +54,7 @@ public class OfficeController {
 	
 	@PostMapping("/edit")
 	public String departmentEdit(@Valid Office office, BindingResult result, RedirectAttributes attr) {
-		if(result.hasErrors()) return "/office/register";
+		if(result.hasErrors()) return "office/register";
 		
 		officeService.update(office);
 		attr.addFlashAttribute("success", "Cargo editado com sucesso.");
