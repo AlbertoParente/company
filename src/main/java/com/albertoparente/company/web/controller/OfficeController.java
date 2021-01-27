@@ -58,7 +58,7 @@ public class OfficeController {
 		
 		officeService.update(office);
 		attr.addFlashAttribute("success", "Cargo editado com sucesso.");
-		return "redirect:/office/register";
+		return "redirect:/office/list";
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -69,7 +69,7 @@ public class OfficeController {
 			officeService.delete(id);
 			attr.addFlashAttribute("success","Cargo excluído com sucesso.");	
 		}
-		return "redirect:/office/register";
+		return "redirect:/office/list";
 	}
 	
 	@ModelAttribute("departments")
