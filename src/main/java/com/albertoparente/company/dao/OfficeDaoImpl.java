@@ -13,7 +13,7 @@ public class OfficeDaoImpl extends AbstractDao<Office, Long> implements OfficeDa
 		int size = 5;
 		int start = (page - 1) * size;
 		
-		List<Office> office = getEntityManager()
+		List<Office> offices = getEntityManager()
 				.createQuery("select o from Office o oreder by o.name asc", Office.class)
 				.setFirstResult(start)
 				.setMaxResults(size)
@@ -22,7 +22,7 @@ public class OfficeDaoImpl extends AbstractDao<Office, Long> implements OfficeDa
 		long totalRecords = count();
 		long totalPages = (totalRecords + (size - 1)) / size;
 		
-		return new Pagination<>(size, page, totalPages, cargos);
+		return new Pagination<>(size, page, totalPages, offices);
 	}
 	
 	public long count() {

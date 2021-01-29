@@ -2,6 +2,7 @@ package com.albertoparente.company.dao;
 
 import java.util.List;
 import com.albertoparente.company.domain.Office;
+import com.albertoparente.company.util.Pagination;
 
 public interface OfficeDao {
 	
@@ -14,4 +15,6 @@ public interface OfficeDao {
 	Office findById(Long id);
 	
 	List<Office> findAll();
+	
+	Pagination<Office> searchPaged(int page);
 }

@@ -1,6 +1,8 @@
 package com.albertoparente.company.web.controller;
 
 import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +13,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.albertoparente.company.domain.Department;
 import com.albertoparente.company.domain.Office;
 import com.albertoparente.company.service.DepartmentService;
 import com.albertoparente.company.service.OfficeService;
+import com.albertoparente.company.util.Pagination;
 
 @Controller
 @RequestMapping("/office")
@@ -32,8 +36,10 @@ public class OfficeController {
 	}
 	
 	@GetMapping("/list")
-	public String officeList(ModelMap model) {
-		model.addAttribute("offices", officeService.findAll());
+	public String officeList(ModelMap model, @RequestParam("page") Optional<Integer> page) {
+		int actualPage = page.orElse(1);
+		Pagination<Office> officePage = officeService.searchPaged(actualPage);
+		model.addAttribute("officePage", officePage);
 		return "office/list";
 	}
 	

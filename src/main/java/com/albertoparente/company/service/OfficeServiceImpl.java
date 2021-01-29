@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.albertoparente.company.dao.OfficeDao;
 import com.albertoparente.company.domain.Office;
+import com.albertoparente.company.util.Pagination;
 
 @Service
 @Transactional(readOnly = false)
@@ -47,5 +48,10 @@ public class OfficeServiceImpl implements OfficeService {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public Pagination<Office> searchPaged(int page) {
+		return officeDao.searchPaged(page);
 	}
 }
