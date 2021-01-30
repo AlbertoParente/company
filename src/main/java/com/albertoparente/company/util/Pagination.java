@@ -17,19 +17,19 @@ public class Pagination<T> {
 		this.records = records;
 	}
 
-	protected int getSize() {
+	public int getSize() {
 		return size;
 	}
 
-	protected int getPage() {
+	public int getPage() {
 		return page;
 	}
 
-	protected long getTotalPages() {
+	public long getTotalPages() {
 		return totalPages;
 	}
 
-	protected List<T> getRecords() {
+	public List<T> getRecords() {
 		return records;
 	}
 }

@@ -14,7 +14,7 @@ public class OfficeDaoImpl extends AbstractDao<Office, Long> implements OfficeDa
 		int start = (page - 1) * size;
 		
 		List<Office> offices = getEntityManager()
-				.createQuery("select o from Office o oreder by o.name asc", Office.class)
+				.createQuery("select o from Office o order by o.name asc", Office.class)
 				.setFirstResult(start)
 				.setMaxResults(size)
 				.getResultList();
@@ -27,7 +27,7 @@ public class OfficeDaoImpl extends AbstractDao<Office, Long> implements OfficeDa
 	
 	public long count() {
 		return getEntityManager()
-				.createNamedQuery("select count(*) from Office", Long.class)
+				.createQuery("select count(*) from Office", Long.class)
 				.getSingleResult();
 	}
 }
