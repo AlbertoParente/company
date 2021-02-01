@@ -56,6 +56,9 @@
 				</table>
 				<nav aria-label="Page navigation example">
 				  <ul class="pagination justify-content-center">
+				  	<li class="page-item">
+				      <a class="page-link" th:href="@{/office/list(page=${1})}" tabindex="-1" aria-disabled="true">First</a>
+				    </li>
 				    <li th:class="${officePage.page == 1} ? 'page-item disable' : 'page-item'">
 				      <a class="page-link" th:href="@{/office/list(page=${officePage.page - 1})}" tabindex="-1" aria-disabled="true">Prev</a>
 				    </li>
@@ -64,6 +67,9 @@
 				    </li>
 				    <li th:class="${officePage.page == officePage.totalPages} ? 'page-item disable' : 'page-item'">
 				      <a class="page-link" th:href="@{/office/list(page=${officePage.page + 1})}">Next</a>
+				    </li>
+				    <li class="page-item">
+				      <a class="page-link" th:href="@{/office/list(page=${officePage.totalPages})}" tabindex="-1" aria-disabled="true">Last</a>
 				    </li>
 				  </ul>
 				</nav>
