@@ -9,12 +9,12 @@ import com.albertoparente.company.util.Pagination;
 @Repository
 public class OfficeDaoImpl extends AbstractDao<Office, Long> implements OfficeDao {
 
-	public Pagination<Office> searchPaged(int page) {
+	public Pagination<Office> searchPaged(int page, String direction) {
 		int size = 5;
 		int start = (page - 1) * size;
 		
 		List<Office> offices = getEntityManager()
-				.createQuery("select o from Office o order by o.name asc", Office.class)
+				.createQuery("select o from Office o order by o.name " + direction, Office.class)
 				.setFirstResult(start)
 				.setMaxResults(size)
 				.getResultList();
@@ -22,7 +22,7 @@ public class OfficeDaoImpl extends AbstractDao<Office, Long> implements OfficeDa
 		long totalRecords = count();
 		long totalPages = (totalRecords + (size - 1)) / size;
 		
-		return new Pagination<>(size, page, totalPages, offices);
+		return new Pagination<>(size, page, totalPages, direction, offices);
 	}
 	
 	public long count() {

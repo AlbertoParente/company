@@ -18,5 +18,5 @@ public interface OfficeService {
 	
 	boolean officeContainsEmployee(Long id);
 	
-	Pagination<Office> searchPaged(int page);
+	Pagination<Office> searchPaged(int page, String direction);
 }

@@ -7,13 +7,15 @@ public class Pagination<T> {
 	private int size;
 	private int page;
 	private long totalPages;
+	private String direction; 
 	private List<T> records;
 	
-	public Pagination(int size, int page, long totalPages, List<T> records) {
+	public Pagination(int size, int page, long totalPages, String direction, List<T> records) {
 		super();
 		this.size = size;
 		this.page = page;
 		this.totalPages = totalPages;
+		this.direction = direction;
 		this.records = records;
 	}
 
@@ -31,5 +33,9 @@ public class Pagination<T> {
 
 	public List<T> getRecords() {
 		return records;
+	}
+
+	protected String getDirection() {
+		return direction;
 	}
 }

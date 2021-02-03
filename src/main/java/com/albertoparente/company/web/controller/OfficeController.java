@@ -35,9 +35,12 @@ public class OfficeController {
 	}
 	
 	@GetMapping("/list")
-	public String officeList(ModelMap model, @RequestParam("page") Optional<Integer> page) {
+	public String officeList(ModelMap model, @RequestParam("page") Optional<Integer> page,
+			                                 @RequestParam("dir") Optional<String> dir) {
 		int actualPage = page.orElse(1);
-		Pagination<Office> officePage = officeService.searchPaged(actualPage);
+		String order = dir.orElse("asc");
+		
+		Pagination<Office> officePage = officeService.searchPaged(actualPage, order);
 		model.addAttribute("officePage", officePage);
 		return "office/list";
 	}

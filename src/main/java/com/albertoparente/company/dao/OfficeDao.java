@@ -16,5 +16,5 @@ public interface OfficeDao {
 	
 	List<Office> findAll();
 	
-	Pagination<Office> searchPaged(int page);
+	Pagination<Office> searchPaged(int page, String direction);
 }

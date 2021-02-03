@@ -51,7 +51,7 @@ public class OfficeServiceImpl implements OfficeService {
 	}
 
 	@Override
-	public Pagination<Office> searchPaged(int page) {
-		return officeDao.searchPaged(page);
+	public Pagination<Office> searchPaged(int page, String direction) {
+		return officeDao.searchPaged(page, direction);
 	}
 }
