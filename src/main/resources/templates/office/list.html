@@ -64,19 +64,19 @@
 				<nav aria-label="Page navigation example">
 				  <ul class="pagination justify-content-center">
 				  	<li class="page-item">
-				      <a class="page-link" th:href="@{/office/list(page=${1})}" tabindex="-1" aria-disabled="true">First</a>
+				      <a class="page-link" th:href="@{/office/list(page=${1}, dir=${officePage.direction})}" tabindex="-1" aria-disabled="true">First</a>
 				    </li>
-				    <li th:class="${officePage.page == 1} ? 'page-item disable' : 'page-item'">
-				      <a class="page-link" th:href="@{/office/list(page=${officePage.page - 1})}" tabindex="-1" aria-disabled="true">Prev</a>
+				    <li th:class="${officePage.page == 1} ? 'page-item disabled' : 'page-item'">
+				      <a class="page-link" th:href="@{/office/list(page=${officePage.page - 1}, dir=${officePage.direction}, dir=${officePage.direction})}" tabindex="-1" aria-disabled="true">Prev</a>
 				    </li>
 				    <li class="page-item">
 				    	<span class="page-link" th:text="|${officePage.page} de ${officePage.totalPages}|"></span>
 				    </li>
-				    <li th:class="${officePage.page == officePage.totalPages} ? 'page-item disable' : 'page-item'">
-				      <a class="page-link" th:href="@{/office/list(page=${officePage.page + 1})}">Next</a>
+				    <li th:class="${officePage.page == officePage.totalPages} ? 'page-item disabled' : 'page-item'">
+				      <a class="page-link" th:href="@{/office/list(page=${officePage.page + 1}, dir=${officePage.direction})}">Next</a>
 				    </li>
 				    <li class="page-item">
-				      <a class="page-link" th:href="@{/office/list(page=${officePage.totalPages})}" tabindex="-1" aria-disabled="true">Last</a>
+				      <a class="page-link" th:href="@{/office/list(page=${officePage.totalPages}, dir=${officePage.direction})}" tabindex="-1" aria-disabled="true">Last</a>
 				    </li>
 				  </ul>
 				</nav>
