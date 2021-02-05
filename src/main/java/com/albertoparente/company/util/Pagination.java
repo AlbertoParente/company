@@ -35,7 +35,7 @@ public class Pagination<T> {
 		return records;
 	}
 
-	protected String getDirection() {
+	public String getDirection() {
 		return direction;
 	}
 }

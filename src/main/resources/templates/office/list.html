@@ -67,7 +67,7 @@
 				      <a class="page-link" th:href="@{/office/list(page=${1}, dir=${officePage.direction})}" tabindex="-1" aria-disabled="true">First</a>
 				    </li>
 				    <li th:class="${officePage.page == 1} ? 'page-item disabled' : 'page-item'">
-				      <a class="page-link" th:href="@{/office/list(page=${officePage.page - 1}, dir=${officePage.direction}, dir=${officePage.direction})}" tabindex="-1" aria-disabled="true">Prev</a>
+				      <a class="page-link" th:href="@{/office/list(page=${officePage.page - 1}, dir=${officePage.direction})}" tabindex="-1" aria-disabled="true">Prev</a>
 				    </li>
 				    <li class="page-item">
 				    	<span class="page-link" th:text="|${officePage.page} de ${officePage.totalPages}|"></span>
