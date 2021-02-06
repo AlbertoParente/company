@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.albertoparente.company.dao.DepartmentDao;
 import com.albertoparente.company.domain.Department;
+import com.albertoparente.company.util.Pagination;
 
 @Service
 @Transactional(readOnly = false)
@@ -47,5 +48,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public Pagination<Department> searchPaged(int page, String direction) {
+		return departmentDao.searchPaged(page, direction);
 	}
 }

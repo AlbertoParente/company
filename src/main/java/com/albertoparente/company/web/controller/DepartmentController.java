@@ -1,5 +1,7 @@
 package com.albertoparente.company.web.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.albertoparente.company.domain.Department;
 import com.albertoparente.company.service.DepartmentService;
+import com.albertoparente.company.util.Pagination;
 
 @Controller
 @RequestMapping("/department")
@@ -26,8 +30,13 @@ public class DepartmentController {
 	}
 	
 	@GetMapping("/list")
-	public String departmentList(ModelMap model) {
-		model.addAttribute("departments", departmentService.findAll());
+	public String departmentList(ModelMap model, @RequestParam("page") Optional<Integer> page,
+            									 @RequestParam("dir") Optional<String> dir) {
+		int actualPage = page.orElse(1);
+		String order = dir.orElse("asc");
+		
+		Pagination<Department> departmentPage = departmentService.searchPaged(actualPage, order);		
+		model.addAttribute("departmentPage", departmentPage);
 		return "department/list";
 	}
 	
@@ -63,6 +72,6 @@ public class DepartmentController {
 			departmentService.delete(id);
 			model.addAttribute("success","Departamento excluído com sucesso.");	
 		}
-		return departmentList(model);
+		return "redirect:/department/list";
 	}
 }

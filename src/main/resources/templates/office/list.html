@@ -32,12 +32,13 @@
 					<thead>
 						<tr>
 							<th th:text="#{th.hashtag}"></th>
-							<th th:text="#{office.th.office}">
-								<a class="page-link" th:href="@{/office/list(page=${officePage.page}, dir=desc)}" tabindex="-1" aria-disabled="true">
-									<span class="bi bi-sort-up"></span>
+							<th>
+								<a class="" th:href="@{/office/list(page=${officePage.page}, dir=desc)}" tabindex="-1">
+									<span class="oi oi-arrow-bottom"></span>
 								</a>
-								<a class="page-link" th:href="@{/office/list(page=${officePage.page}, dir=asc)}" tabindex="-1" aria-disabled="true">
-									<span class="bi bi-sort-down-alt"></span>
+								Office
+								<a class="" th:href="@{/office/list(page=${officePage.page}, dir=asc)}" tabindex="-1">
+									<span class="oi oi-arrow-top"></span>
 								</a>
 							</th>
 							<th th:text="#{office.th.department}"></th>

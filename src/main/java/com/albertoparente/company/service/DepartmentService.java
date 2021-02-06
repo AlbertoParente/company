@@ -2,6 +2,7 @@ package com.albertoparente.company.service;
 
 import java.util.List;
 import com.albertoparente.company.domain.Department;
+import com.albertoparente.company.util.Pagination;
 
 public interface DepartmentService {
 	
@@ -16,4 +17,6 @@ public interface DepartmentService {
 	List<Department> findAll();
 
 	boolean departmentContainsOffice(Long id);
+	
+	Pagination<Department> searchPaged(int page, String direction);
 }
