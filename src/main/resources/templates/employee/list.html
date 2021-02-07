@@ -90,7 +90,15 @@
 					<thead>
 						<tr>
 							<th th:text="#{th.hashtag}"></th>
-							<th th:text="#{employee.th.name}"></th>
+							<th>
+								<a class="" th:href="@{/employee/list(page=${employeePage.page}, dir=desc)}" tabindex="-1">
+									<span class="oi oi-arrow-bottom"></span>
+								</a>
+								Funcionario
+								<a class="" th:href="@{/employee/list(page=${employeePage.page}, dir=asc)}" tabindex="-1">
+									<span class="oi oi-arrow-top"></span>
+								</a>
+							</th>
 							<th th:text="#{employee.th.salary}"></th>
 							<th th:text="#{employee.th.department}"></th>
 							<th th:text="#{employee.th.office}"></th>
@@ -101,7 +109,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="list : ${employees}">
+						<tr th:each="list : ${employeePage.records}">
 							<td th:text="${list.id}" ></td>
 							<td th:text="${list.name}"></td>
 							<td th:text="|R$ ${{list.salary}}|"></td>
@@ -138,14 +146,20 @@
 				</table>
 				<nav aria-label="Page navigation example">
 				  <ul class="pagination justify-content-center">
-				    <li class="page-item disabled">
-				      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+				  	<li class="page-item">
+				      <a class="page-link" th:href="@{/employee/list(page=${1}, dir=${employeePage.direction})}" tabindex="-1" aria-disabled="true">First</a>
 				    </li>
-				    <li class="page-item"><a class="page-link" href="#">1</a></li>
-				    <li class="page-item"><a class="page-link" href="#">2</a></li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li th:class="${departmentPage.page == 1} ? 'page-item disabled' : 'page-item'">
+				      <a class="page-link" th:href="@{/employee/list(page=${employeePage.page - 1}, dir=${employeePage.direction})}" tabindex="-1" aria-disabled="true">Prev</a>
+				    </li>
 				    <li class="page-item">
-				      <a class="page-link" href="#">Next</a>
+				    	<span class="page-link" th:text="|${employeePage.page} de ${employeePage.totalPages}|"></span>
+				    </li>
+				    <li th:class="${departmentPage.page == departmentPage.totalPages} ? 'page-item disabled' : 'page-item'">
+				      <a class="page-link" th:href="@{/employee/list(page=${employeePage.page + 1}, dir=${employeePage.direction})}">Next</a>
+				    </li>
+				    <li class="page-item">
+				      <a class="page-link" th:href="@{/employee/list(page=${employeePage.totalPages}, dir=${employeePage.direction})}" tabindex="-1" aria-disabled="true">Last</a>
 				    </li>
 				  </ul>
 				</nav>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.albertoparente.company.domain.Employee;
 //import javax.persistence.TypedQuery;
+import com.albertoparente.company.util.Pagination;
 
 @Repository
 public class EmployeeDaoImpl extends AbstractDao<Employee, Long> implements EmployeeDao {
@@ -49,5 +50,27 @@ public class EmployeeDaoImpl extends AbstractDao<Employee, Long> implements Empl
 				.append("order by e.admissionDate asc")
 				.toString();
 		return createQuery(jpql, resignationDate);
+	}
+	
+	public Pagination<Employee> searchPaged(int page, String direction) {
+		int size = 5;
+		int start = (page - 1) * size;
+		
+		List<Employee> employees = getEntityManager()
+				.createQuery("select o from Employee o order by o.name " + direction, Employee.class)
+				.setFirstResult(start)
+				.setMaxResults(size)
+				.getResultList();
+		
+		long totalRecords = count();
+		long totalPages = (totalRecords + (size - 1)) / size;
+		
+		return new Pagination<>(size, page, totalPages, direction, employees);
+	}
+	
+	public long count() {
+		return getEntityManager()
+				.createQuery("select count(*) from Employee", Long.class)
+				.getSingleResult();
 	}
 }

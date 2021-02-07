@@ -3,6 +3,7 @@ package com.albertoparente.company.dao;
 import java.time.LocalDate;
 import java.util.List;
 import com.albertoparente.company.domain.Employee;
+import com.albertoparente.company.util.Pagination;
 
 public interface EmployeeDao {
 	
@@ -25,4 +26,6 @@ public interface EmployeeDao {
 	List<Employee> findByAdmissionDate(LocalDate admissionDate);
 
 	List<Employee> findByResignationDate(LocalDate resignationDate);
+	
+	Pagination<Employee> searchPaged(int page, String direction);
 }
