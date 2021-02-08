@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.albertoparente.company.dao.EmployeeDao;
 import com.albertoparente.company.domain.Employee;
-import com.albertoparente.company.util.Pagination;
+// import com.albertoparente.company.util.Pagination;
 
 @Service
 @Transactional(readOnly = false)
@@ -67,9 +67,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 			return new ArrayList<>();
 		}
 	}
-
+	/*
 	@Override
 	public Pagination<Employee> searchPaged(int page, String direction) {
 		return employeeDao.searchPaged(page, direction);
-	}	
+	}*/
 }

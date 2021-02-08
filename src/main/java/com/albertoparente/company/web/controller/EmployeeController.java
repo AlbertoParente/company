@@ -2,7 +2,7 @@ package com.albertoparente.company.web.controller;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
+// import java.util.Optional;
 
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import com.albertoparente.company.domain.Office;
 import com.albertoparente.company.domain.Uf;
 import com.albertoparente.company.service.EmployeeService;
 import com.albertoparente.company.service.OfficeService;
-import com.albertoparente.company.util.Pagination;
+// import com.albertoparente.company.util.Pagination;
 import com.albertoparente.company.web.validator.EmployeeValidator;
 
 @Controller
@@ -48,6 +48,12 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/list")
+	public String employeeList(ModelMap model) {
+		model.addAttribute("employees", employeeService.findAll());
+		return "employee/list";
+	}
+	/*
+	@GetMapping("/list")
 	public String employeeList(ModelMap model, @RequestParam("page") Optional<Integer> page,
 			 								   @RequestParam("dir") Optional<String> dir) {
 		int actualPage = page.orElse(1);
@@ -56,7 +62,7 @@ public class EmployeeController {
 		Pagination<Employee> employeePage = employeeService.searchPaged(actualPage, order);
 		model.addAttribute("employeePage", employeePage);
 		return "employee/list";
-	}
+	}*/
 	
 	@PostMapping("/save")
 	public String emplooyeeSave(@Valid Employee employee, BindingResult result, RedirectAttributes attr) {

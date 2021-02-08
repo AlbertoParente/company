@@ -3,7 +3,7 @@ package com.albertoparente.company.service;
 import java.time.LocalDate;
 import java.util.List;
 import com.albertoparente.company.domain.Employee;
-import com.albertoparente.company.util.Pagination;
+// import com.albertoparente.company.util.Pagination;
 
 public interface EmployeeService {
 
@@ -23,5 +23,5 @@ public interface EmployeeService {
 
 	List<Employee> findByDate(LocalDate admissionDate, LocalDate resignationDate);
 	
-	Pagination<Employee> searchPaged(int page, String direction);
+	/*Pagination<Employee> searchPaged(int page, String direction);*/
 }
