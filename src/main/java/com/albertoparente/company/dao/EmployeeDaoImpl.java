@@ -57,7 +57,7 @@ public class EmployeeDaoImpl extends AbstractDao<Employee, Long> implements Empl
 		int start = (page - 1) * size;
 		
 		List<Employee> employees = getEntityManager()
-				.createQuery("select o from Employee o order by o.name " + direction, Employee.class)
+				.createQuery("select e from Employee e order by e.name " + direction, Employee.class)
 				.setFirstResult(start)
 				.setMaxResults(size)
 				.getResultList();

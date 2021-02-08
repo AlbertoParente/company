@@ -14,7 +14,7 @@ public class DepartmentDaoImpl extends AbstractDao<Department, Long> implements 
 		int start = (page - 1) * size;
 		
 		List<Department> departments = getEntityManager()
-				.createQuery("select o from Department o order by o.name " + direction, Department.class)
+				.createQuery("select d from Department d order by d.name " + direction, Department.class)
 				.setFirstResult(start)
 				.setMaxResults(size)
 				.getResultList();
